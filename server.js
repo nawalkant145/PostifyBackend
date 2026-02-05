@@ -9,7 +9,17 @@ const postRoutes = require('./routes/posts');
 const app = express();
 
 // Middleware
-app.use(cors());
+
+const cors = require('cors');
+
+app.use(cors({
+  origin: [
+    'http://localhost:3000',
+    'https://postify-uwg3.vercel.app'
+  ],
+  credentials: true
+}));
+
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
